@@ -1,0 +1,12 @@
+{
+    { "Quasimofo", 1000 },
+    { "Esmerelda", 900 },
+    { "Claude Frollo", 800 },
+    { "Phoebus", 700 },
+    { "Paquette", 600 },
+    { "Pierre Gringore",500 },
+    { "Gudule", 400 },
+    { "Fleur-de-Lys", 300 },
+    { "Clopin", 200 },
+    { "Jehan", 100 }
+}
