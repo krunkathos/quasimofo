@@ -15,7 +15,7 @@
 function love.conf(t)
     t.title = "Quasimofo"
     t.identity = t.title
-    t.version = "0.9.2"
+    t.version = "11.3"
     t.author = "krunkathos"
     t.console = true
 end

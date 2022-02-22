@@ -40,7 +40,7 @@ function leveldata.save(filename)
 end
 
 function leveldata.load(filename)
-    if love.filesystem.exists(filename) then
+    if love.filesystem.getInfo(filename) then
         leveldata.map = Tserial.unpack(love.filesystem.read(filename))
     else
         print("**** Could not open file "..filename)
@@ -53,14 +53,14 @@ end
 
 function leveldata.load_checkpoint(filename)
     local level = { 0 }
-    if love.filesystem.exists(filename) then
+    if love.filesystem.getInfo(filename) then
         level = Tserial.unpack(love.filesystem.read(filename))
     end
     return level[1]
 end
 
 function leveldata.update_checkpoint(filename, new_cp)
-    if love.filesystem.exists(filename) then
+    if love.filesystem.getInfo(filename) then
         local old_cp = leveldata.load_checkpoint(filename)
         if new_cp > old_cp then leveldata.save_checkpoint(filename, new_cp) end
     else

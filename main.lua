@@ -37,7 +37,7 @@ function love.update(dt)
     --dt = dt/4
     dt = gfx.resetDTScreenResizing(dt)
     
-    if love.keyboard.isDown(" ") and love.keyboard.isDown("lalt") then
+    if love.keyboard.isDown("space") and love.keyboard.isDown("lalt") then
         gfx.toggleFullscreen()
         return
     end

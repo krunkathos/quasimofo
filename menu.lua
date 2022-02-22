@@ -67,7 +67,7 @@ function menu.load()
     menu.sound_full = love.audio.newSource("sounds/wooble.wav", "static")
     menu.sound_full:setVolume(0.8)
     
-    menu.sound_music = love.audio.newSource("music/menumusic.mp3")
+    menu.sound_music = love.audio.newSource("music/menumusic.mp3", "stream")
     menu.sound_music:setLooping(true)
     
     highscores.load()
@@ -124,9 +124,9 @@ end
 
 function menu.draw()
     local mode = menu.mode[menu.mode_select]
-    love.graphics.setColor(200, 200, 200)
+    love.graphics.setColor(love.math.colorFromBytes(200, 200, 200))
     love.graphics.draw(menu.title_image, 110, 60)
-    love.graphics.setColor(255, 255, 255)
+    love.graphics.setColor(love.math.colorFromBytes(255, 255, 255))
     love.graphics.draw(menu.title, 0, 0)
     
     if mode == "SHOWMENU" then menu.draw_menu()
@@ -138,16 +138,16 @@ end
 
 function menu.draw_menu()
     for m = 1, #menu.options do
-        love.graphics.setColor(0, 0, 0)
+        love.graphics.setColor(love.math.colorFromBytes(0, 0, 0))
         for y = -1, 1, 2 do
             for x = -1, 1, 2 do
                 love.graphics.printf(menu.options[m], 200+x, 120 + ((m-1)*16) + y, 120, "left")                
             end
         end
         if menu.select == m then
-            love.graphics.setColor(255, 255, 255)
+            love.graphics.setColor(love.math.colorFromBytes(255, 255, 255))
         else
-            love.graphics.setColor(160, 160, 160)
+            love.graphics.setColor(love.math.colorFromBytes(160, 160, 160))
         end
         love.graphics.printf(menu.options[m], 200, 120 + ((m-1)*16), 120, "left")
     end
@@ -155,7 +155,7 @@ end
 
 function menu.draw_list(list)
     love.graphics.setFont(gfx.font_small)
-    love.graphics.setColor(255, 255, 255)
+    love.graphics.setColor(love.math.colorFromBytes(255, 255, 255))
     for c = 1, #list do
         love.graphics.printf(list[c], 10, 100 + ((c-1)*8), 310, "right")
     end

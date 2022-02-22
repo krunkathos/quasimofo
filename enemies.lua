@@ -109,7 +109,7 @@ end
 function enemies.draw()
     local offx
     
-    love.graphics.setColor( 255, 255, 255 )
+    love.graphics.setColor(love.math.colorFromBytes( 255, 255, 255 ))
     for i = 1, #enemies.objects do
         local e = enemies.objects[i]
         if e.appeardelay >= e.appeardelay_count or enemies.display_all then

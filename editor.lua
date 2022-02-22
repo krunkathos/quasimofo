@@ -341,7 +341,7 @@ function editor.draw()
 end
 
 function editor.draw_editor()
-    love.graphics.setColor(255, 255, 255)
+    love.graphics.setColor(love.math.colorFromBytes(255, 255, 255))
     local apd = ""
     if editor.mode == "EDITTITLE" then apd = "_" end
     love.graphics.printf(leveldata.map[editor.level][1][1]..apd, 0, 6, 320, "center")
@@ -353,37 +353,37 @@ function editor.draw_editor()
     editor.draw_cursor()
     editor.draw_params()
     
-    love.graphics.setColor( 255, 255, 255 )
+    love.graphics.setColor(love.math.colorFromBytes( 255, 255, 255 ))
     love.graphics.printf(editor.level.."/"..#leveldata.map, 200, 230, 120, "right")
     
     for t = 1, #levels.tiles do
-        love.graphics.setColor( 255, 255, 255, 140 )
+        love.graphics.setColor(love.math.colorFromBytes( 255, 255, 255, 140 ))
         love.graphics.draw(levels.tiles[t], (t-1)*leveldata.TIL_SIZE, 240-leveldata.TIL_SIZE)
-        love.graphics.setColor( 255, 255, 255 )
+        love.graphics.setColor(love.math.colorFromBytes( 255, 255, 255 ))
         love.graphics.printf(t, (t-1)*leveldata.TIL_SIZE, 231, leveldata.TIL_SIZE, "center")
     end
-    love.graphics.setColor( 255, 255, 255, 150 )
+    love.graphics.setColor(love.math.colorFromBytes( 255, 255, 255, 150 ))
     love.graphics.draw(ropes.bell_image, 160, 240-leveldata.TIL_SIZE)
-    love.graphics.setColor( 255, 255, 255 )
+    love.graphics.setColor(love.math.colorFromBytes( 255, 255, 255 ))
     love.graphics.printf("R/S", 160, 231, leveldata.TIL_SIZE, "center")
     love.graphics.draw(ropes.bell_image, 180, 240-leveldata.TIL_SIZE)
     love.graphics.printf("F", 180, 231, leveldata.TIL_SIZE, "center")
     
-    love.graphics.setColor( 255, 255, 255, 140 )
+    love.graphics.setColor(love.math.colorFromBytes( 255, 255, 255, 140 ))
     love.graphics.draw(enemies.images[1][1], 200, 240-leveldata.TIL_SIZE)
-    love.graphics.setColor( 255, 255, 255 )
+    love.graphics.setColor(love.math.colorFromBytes( 255, 255, 255 ))
     love.graphics.printf("B", 200, 231, leveldata.TIL_SIZE, "center")
 
     if editor.msg ~= "" then
-        love.graphics.setColor( 0, 0, 0 )
+        love.graphics.setColor(love.math.colorFromBytes( 0, 0, 0 ))
         love.graphics.rectangle( "fill", 85, 100, 150, 40 )
-        love.graphics.setColor( 255, 255, 255 )
+        love.graphics.setColor(love.math.colorFromBytes( 255, 255, 255 ))
         love.graphics.printf(editor.msg, 100, 118, 120, "center")
     end
 end
 
 function editor.draw_grid()
-    love.graphics.setColor( 255, 255, 255, 10 )
+    love.graphics.setColor(love.math.colorFromBytes( 255, 255, 255, 10 ))
     for y = 1, 14 do
         for x = 0, 20 do
             local posx = x * leveldata.TIL_SIZE
@@ -414,9 +414,9 @@ end
 function editor.draw_cursor()
     local x, y = (editor.selectx-1)*leveldata.TIL_SIZE, editor.selecty*leveldata.TIL_SIZE
     if editor.mode == "EDITSCENE" then
-        love.graphics.setColor(255, 0, 0)
+        love.graphics.setColor(love.math.colorFromBytes(255, 0, 0))
     else
-        love.graphics.setColor(128, 0, 0)
+        love.graphics.setColor(love.math.colorFromBytes(128, 0, 0))
     end
     love.graphics.setLineStyle("rough")
     love.graphics.rectangle("line", x, y, leveldata.TIL_SIZE, leveldata.TIL_SIZE)
@@ -437,14 +437,14 @@ function editor.draw_params()
     love.graphics.setFont(gfx.font_small)
     local paramset = editor.find_validparamset(element)
     if paramset ~= nil then
-        love.graphics.setColor(0, 0, 0)
+        love.graphics.setColor(love.math.colorFromBytes(0, 0, 0))
         love.graphics.rectangle("fill", 0, 0, 320, 15)
         for a = 1, #args do
             if paramset[a+1][1] ~= "" then
                 if editor.params_select == a and editor.mode == "EDITPARAMS" then
-                    love.graphics.setColor(255, 255, 255)
+                    love.graphics.setColor(love.math.colorFromBytes(255, 255, 255))
                 else
-                    love.graphics.setColor(180, 180, 180)
+                    love.graphics.setColor(love.math.colorFromBytes(180, 180, 180))
                 end
                 love.graphics.printf(paramset[a+1][1]..":", ((a-1)*56), 6, 32, "right")
                 love.graphics.printf(args[a], ((a-1)*56)+32, 6, 32, "left")
@@ -455,10 +455,10 @@ function editor.draw_params()
 end
 
 function editor.draw_showinfo()
-    love.graphics.setColor(0, 0, 0)
+    love.graphics.setColor(love.math.colorFromBytes(0, 0, 0))
     love.graphics.rectangle("fill", 20, 20, 280, 200)
 
-    love.graphics.setColor(255, 255, 255)
+    love.graphics.setColor(love.math.colorFromBytes(255, 255, 255))
     love.graphics.setFont(gfx.font_small)
     for i = 1, #editor.info do
         love.graphics.printf(editor.info[i], 20, 20 + ((i-1)*8), 260, "left")
