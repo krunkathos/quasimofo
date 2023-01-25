@@ -49,10 +49,10 @@ function game.load()
     game.heart_image = love.graphics.newImage("gfx/heart.png")
     game.badguy_image = love.graphics.newImage("gfx/enemies/soldier.png")
     
-    game.sound_music = love.audio.newSource("music/gamemusic.mp3")
+    game.sound_music = love.audio.newSource("music/gamemusic.mp3", "stream")
     game.sound_music:setLooping(true)
     
-    game.sound_endmusic = love.audio.newSource("music/endmusic.mp3")
+    game.sound_endmusic = love.audio.newSource("music/endmusic.mp3", "stream")
     game.sound_endmusic:setLooping(true)
     
     game.sound_checkpoint = love.audio.newSource("sounds/wooble.wav", "static")
@@ -169,7 +169,7 @@ function game.update(dt)
             end
         end
     elseif game.mode == "GAMECOMPLETE" then
-        if game.inc_statedelay(dt, 14.85) or love.keyboard.isDown(" ") then
+        if game.inc_statedelay(dt, 14.85) or love.keyboard.isDown("space") then
             game.sound_endmusic:stop()
             game.mode_count = 0
             game.level = 1
@@ -208,25 +208,25 @@ function game.draw()
     player.draw()
     game.draw_levelview()
     
-    love.graphics.setColor( 255, 255, 255 )
+    love.graphics.setColor(love.math.colorFromBytes( 255, 255, 255 ))
     love.graphics.print("SCORE  "..game.score, 120, 3)
-    love.graphics.setColor( 180, 255, 255 )
+    love.graphics.setColor(love.math.colorFromBytes( 180, 255, 255 ))
     love.graphics.print("LIVES", 120, 12)
     
-    love.graphics.setColor( 255, 255, 255 )
+    love.graphics.setColor(love.math.colorFromBytes( 255, 255, 255 ))
     for l = 1, game.lives do
         love.graphics.draw(game.life_image, 176 + ((l-1)*8), 9)
     end
 
-    love.graphics.setColor( 0, 0, 0 )
+    love.graphics.setColor(love.math.colorFromBytes( 0, 0, 0 ))
     love.graphics.rectangle( "fill", 0, 224, 320, 16 )
-    love.graphics.setColor( 255, 255, 255 )
+    love.graphics.setColor(love.math.colorFromBytes( 255, 255, 255 ))
     love.graphics.printf(leveldata.map[game.level][1][1], 0, 230, 320, "center")
     
     if game.msg ~= "" then
-        love.graphics.setColor( 0, 0, 0 )
+        love.graphics.setColor(love.math.colorFromBytes( 0, 0, 0 ))
         love.graphics.rectangle( "fill", 85, 100, 150, 40 )
-        love.graphics.setColor( 255, 255, 255 )
+        love.graphics.setColor(love.math.colorFromBytes( 255, 255, 255 ))
         love.graphics.printf(game.msg, 100, 118, 120, "center")
     end
     
@@ -240,12 +240,12 @@ function game.draw_levelview()
     local bLevels = #leveldata.map-5
     local bWidth = (bLevels * 4) + 4 + 4 + 6
     
-    love.graphics.setColor( 255, 255, 255 )
+    love.graphics.setColor(love.math.colorFromBytes( 255, 255, 255 ))
     love.graphics.rectangle( "fill", game.BAN_X, game.BAN_Y, bWidth, 26 )
-    love.graphics.setColor( 0, 0, 0 )
+    love.graphics.setColor(love.math.colorFromBytes( 0, 0, 0 ))
     love.graphics.rectangle( "fill", game.BAN_X+2, game.BAN_Y+2, bWidth-4, 22 )
     
-    love.graphics.setColor( 50, 50, 50 )
+    love.graphics.setColor(love.math.colorFromBytes( 50, 50, 50 ))
     love.graphics.setLineStyle( "rough" )
     love.graphics.setLineWidth( 1 )
     for l = 0, bLevels-1 do
@@ -257,11 +257,11 @@ function game.draw_levelview()
     love.graphics.rectangle( "fill",
         game.BAN_X + (bLevels*4) + 4, game.BAN_Y + 6, 6, 16 )
 
-    love.graphics.setColor( 0, 0, 0 )
+    love.graphics.setColor(love.math.colorFromBytes( 0, 0, 0 ))
     love.graphics.rectangle( "fill",
         game.BAN_X + (bLevels*4) + 6, game.BAN_Y + 8, 2, 4 )
 
-    love.graphics.setColor( 255, 255, 255 )
+    love.graphics.setColor(love.math.colorFromBytes( 255, 255, 255 ))
     local x, y
     if game.level <= bLevels then
         x = game.BAN_X + ((game.level-1)*4) + 4
@@ -280,15 +280,15 @@ function game.draw_intro()
     end
     love.graphics.draw(game.princess_image, math.floor(prin_x), 98)
     love.graphics.draw(game.badguy_image, math.floor(prin_x)+7, 98)
-    love.graphics.setColor( 0, 0, 0 )
+    love.graphics.setColor(love.math.colorFromBytes( 0, 0, 0 ))
     love.graphics.rectangle( "fill", 320, 0, 200, 240 )    
 end
 
 function game.draw_ending()
-    love.graphics.setColor( 0, 0, 0 )
+    love.graphics.setColor(love.math.colorFromBytes( 0, 0, 0 ))
     love.graphics.rectangle( "fill", 0, 0, 330, 240 )
     
-    love.graphics.setColor( 255, 255, 255 )
+    love.graphics.setColor(love.math.colorFromBytes( 255, 255, 255 ))
     love.graphics.printf("Congratulations!",30, 50, 260, "center")
     for y = 70, 170, 50 do
         for x = 60, 260, 50 do

@@ -116,7 +116,7 @@ function ropes.draw()
     love.graphics.setLineStyle( "rough" )
     love.graphics.setLineWidth( 1 )
     for t = 1, #ropes.threads do
-        love.graphics.setColor( 255, 255, 255 )
+        love.graphics.setColor(love.math.colorFromBytes( 255, 255, 255 ))
         local rope = ropes.threads[t]
         local path = rope.paths[rope.counter]
         for o = 2, #path do

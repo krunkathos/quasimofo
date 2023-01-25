@@ -197,7 +197,7 @@ function player.update(dt, level)
         and player.rope_grip == "left" then player.remember_last_rope() end
     if love.keyboard.isDown("p") and player.rope_grip == "yes" then player.up(dt) end
     if love.keyboard.isDown("l") and player.rope_grip == "yes" then player.down(dt) end
-    if love.keyboard.isDown(" ") and not player.falling then player.jump(dt) end
+    if love.keyboard.isDown("space") and not player.falling then player.jump(dt) end
     
     if player.rope_grip ~= "yes" then player.y_accel = player.y_accel - (dt * 120) end    
     
@@ -246,7 +246,7 @@ end
 
 function player.draw()
     local offx = 0
-    love.graphics.setColor( 255, 255, 255 )
+    love.graphics.setColor(love.math.colorFromBytes( 255, 255, 255 ))
     if not player.death then
         if player.image_flip == -1 then offx = 12 end
         love.graphics.draw(player.images[player.image_count], math.floor(player.x)+offx, math.floor(player.y), 0, player.image_flip, 1, 0)

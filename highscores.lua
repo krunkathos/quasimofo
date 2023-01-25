@@ -24,7 +24,7 @@ highscores.scores = {}
 highscores.enter_name = ""
 
 function highscores.load()
-    if love.filesystem.exists(highscores.HIS_FILENAME) then
+    if love.filesystem.getInfo(highscores.HIS_FILENAME) then
         highscores.scores = Tserial.unpack(love.filesystem.read(highscores.HIS_FILENAME))
     else
         print("**** Could not open file "..highscores.HIS_FILENAME)
@@ -72,24 +72,24 @@ function highscores.keyreleased(key)
 end
 
 function highscores.draw_scores()
-    love.graphics.setColor( 0, 0, 0 )
+    love.graphics.setColor(love.math.colorFromBytes( 0, 0, 0 ))
     love.graphics.rectangle( "fill", 0, 0, 320, 240 )
 
-    love.graphics.setColor(255, 255, 255)
+    love.graphics.setColor(love.math.colorFromBytes(255, 255, 255))
     love.graphics.printf("High Scores", 10, 10, 300, "center")
     for s = #highscores.scores, 1, -1 do
-        love.graphics.setColor(180, 255, 180)
+        love.graphics.setColor(love.math.colorFromBytes(180, 255, 180))
         love.graphics.printf(highscores.scores[s][1], 60, 34 + ((s-1)*20), 160, "left")
-        love.graphics.setColor(180, 180, 255)
+        love.graphics.setColor(love.math.colorFromBytes(180, 180, 255))
         love.graphics.printf(highscores.scores[s][2], 230, 34 + ((s-1)*20), 150, "left")
     end
 end
 
 function highscores.draw_entername()
-    love.graphics.setColor( 0, 0, 0 )
+    love.graphics.setColor(love.math.colorFromBytes( 0, 0, 0 ))
     love.graphics.rectangle( "fill", 10, 100, 300, 64 )
 
-    love.graphics.setColor(255, 255, 255)
+    love.graphics.setColor(love.math.colorFromBytes(255, 255, 255))
     love.graphics.printf("You achieved a high score!", 10, 110, 300, "center")    
     love.graphics.printf("Enter your name:", 10, 122, 300, "center")    
     love.graphics.printf(highscores.enter_name.."_", 10, 146, 300, "center")    

@@ -80,14 +80,14 @@ function levels.update(dt)
 end
 
 function levels.draw(level)
-    love.graphics.setColor( 255, 255, 255 )
+    love.graphics.setColor(love.math.colorFromBytes( 255, 255, 255 ))
     love.graphics.draw(levels.backgrounds[leveldata.map[level][1][2]], 0, 18)
     if leveldata.map[level][1][3] then
-        love.graphics.setColor( 0, 160, 0 )
+        love.graphics.setColor(love.math.colorFromBytes( 0, 160, 0 ))
         love.graphics.rectangle( "fill", 300, 3, 20, 12 )
-        love.graphics.setColor( 0, 0, 0 )
+        love.graphics.setColor(love.math.colorFromBytes( 0, 0, 0 ))
         love.graphics.printf("CP", 302, 8, 18, "center")
-        love.graphics.setColor( 255, 255, 255 )
+        love.graphics.setColor(love.math.colorFromBytes( 255, 255, 255 ))
         love.graphics.printf("CP", 300, 7, 20, "center")
     end
 

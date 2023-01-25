@@ -32,8 +32,8 @@ gfx.of_y = -1
 
 function gfx.load()
     love.window.setMode(0, 0, {fullscreen=false, vsync=false})
-    gfx.max_width = love.window.getWidth()
-    gfx.max_height = love.window.getHeight()
+    gfx.max_width = love.graphics.getWidth()
+    gfx.max_height = love.graphics.getHeight()
     love.graphics.setDefaultFilter("nearest", "nearest")
 
     gfx.font_normal = love.graphics.setNewFont("gfx/fonts/PressStart2P/PressStart2P-Regular.ttf", 8)
@@ -49,8 +49,8 @@ end
 function gfx.setFullscreen(fs)
     love.window.setMode(gfx.SCN_TG_WIDTH, gfx.SCN_TG_HEIGHT,
         {fullscreen=fs, fullscreentype="desktop", vsync=true, minwidth=gfx.max_width*gfx.SCN_PROP, minheight=gfx.max_height*gfx.SCN_PROP})
-    gfx.sc_width = love.window.getWidth()
-    gfx.sc_height = love.window.getHeight()
+    gfx.sc_width = love.graphics.getWidth()
+    gfx.sc_height = love.graphics.getHeight()
     
     local sc_ratio = gfx.sc_width / gfx.sc_height
     if sc_ratio >= (gfx.SCN_TG_WIDTH / gfx.SCN_TG_HEIGHT) then
