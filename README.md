@@ -1,7 +1,11 @@
 # Quasimofo
 (C) 2016 krunkathos
 
-Tested with LÖVE 13.
+Tested with LÖVE 11.3.
+
+## Acknowledgements
+
+Thanks to [@malessandrini](https://github.com/malessandrini) for contributing a code update for LÖVE 11.3 compatibility.
 
 ## License
 
