@@ -1,7 +1,7 @@
 # Quasimofo
 (C) 2016 krunkathos
 
-Tested with LÖVE 0.9.2.
+Tested with LÖVE 13.
 
 ## License
 
