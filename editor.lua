@@ -405,7 +405,7 @@ function editor.drawLine(x1, y1, x2, y2, interval)
     y = y1
 
     for i = 1, len do
-        if i % interval == 0 then love.graphics.point(x, y) end
+        if i % interval == 0 then love.graphics.points(x, y) end
         x = x + stepx
         y = y + stepy
     end
